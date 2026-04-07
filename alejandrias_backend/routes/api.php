@@ -38,3 +38,5 @@ Route::post('/publicaciones/{publicacionId}/comentarios', [ComentarioController:
 Route::get('/comentarios/{id}', [ComentarioController::class, 'show']);
 Route::put('/comentarios/{id}', [ComentarioController::class, 'update']);
 Route::delete('/comentarios/{id}', [ComentarioController::class, 'destroy']);
+
+Route::get('/recomendar', [ForoController::class, 'recomendar']);

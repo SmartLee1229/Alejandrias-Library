@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Foro;
 use App\Models\Usuario;
+use App\Services\IAService;
 
 class ForoController extends Controller
 {
@@ -169,4 +170,16 @@ class ForoController extends Controller
         ], 500);
     }
 }
+    public function recomendar(IAService $ia)
+    {
+        $user = auth()->user();
+
+        $intereses = $user->intereses ?? null;
+
+        $foros = Foro::pluck('titulo');
+
+        $resultado = $ia->recomendar($intereses, $foros);
+
+        return response()->json($resultado);
+    }
 }
