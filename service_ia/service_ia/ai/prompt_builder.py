@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 import json
 
 from .task_router import obtener_modo_respuesta
@@ -39,7 +37,6 @@ def _serializar_historial(historial):
     return json.dumps(historial_reducido, ensure_ascii=False)
 
 
->>>>>>> Stashed changes
 def construir_prompt_recomendador(contexto):
 
     return f"""
@@ -68,10 +65,6 @@ def construir_prompt_recomendador(contexto):
 
     Si no hay intereses, recomienda foros populares.
 
-<<<<<<< Updated upstream
-    INTERESES:
-    {contexto.get('intereses')}
-=======
 def construir_prompt_chat(contexto):
     historial = contexto.get("historial") or []
     mensaje = contexto.get("mensaje") or ""
@@ -83,23 +76,10 @@ def construir_prompt_chat(contexto):
     es_seguimiento = "si" if contexto.get("es_seguimiento") else "no"
     foros = contexto.get("foros") or []
     bloque_foros = ""
->>>>>>> Stashed changes
 
     FOROS DISPONIBLES:
     {contexto.get('foros')}
 
-<<<<<<< Updated upstream
-    Responde SOLO en JSON válido:
-    [
-      {{
-        "titulo": "...",
-        "nivel": "...",
-        "coincidencia": "...",
-        "razon": "..."
-      }}
-    ]
-    """
-=======
 FOROS EXISTENTES EN LA PLATAFORMA:
 {json.dumps(foros[:12], ensure_ascii=False)}
 
@@ -140,4 +120,3 @@ MENSAJE DEL USUARIO:
 
 {bloque_foros}
 """.strip()
->>>>>>> Stashed changes
